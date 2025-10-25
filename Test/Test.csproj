@@ -12,4 +12,10 @@
       <ProjectReference Include="..\Connectors\Connectors.MistralAI\Connectors.MistralAI.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="..\.gitignore">
+        <Link>.gitignore</Link>
+      </Content>
+    </ItemGroup>
+
 </Project>

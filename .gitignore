@@ -35,8 +35,8 @@ CMakeFiles/
 node_modules/
 packages
 TestResults
-bin
-obj
+**/[Bb]in/**
+**/[Oo]bj/**
 Temp
 Platform/Install/packages
 Platform/Web/
