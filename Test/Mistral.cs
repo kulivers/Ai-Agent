@@ -1,5 +1,8 @@
-﻿using Microsoft.SemanticKernel;
+﻿using System.Text;
+using System.Threading.Channels;
+using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
+using Microsoft.SemanticKernel.ChatCompletion;
 
 namespace Test;
 
@@ -23,14 +26,42 @@ public class MistralExample
                 Kernel = kernel,
             };
 
-        await foreach (StreamingChatMessageContent update in agent.InvokeStreamingAsync("Write a haiku about Semantic Kernel. i need 8 raws").ConfigureAwait(false))
+        var chatService = kernel.GetRequiredService<IChatCompletionService>();
+        var chatMessages = new ChatHistory();
+        string? message = null;
+        while (true)
         {
-                Console.Write(update);
+            try
+            {
+                Console.WriteLine("Prompt:");
+                while (string.IsNullOrWhiteSpace(message))
+                {
+                    message = Console.ReadLine();
+                }
+
+                chatMessages.AddMessage(AuthorRole.User, message);
+
+                StringBuilder sb = new StringBuilder();
+                var chatCompletion = chatService.GetChatMessageContentsAsync(chatMessages, kernel: kernel);
+                foreach (var response in await chatCompletion.ConfigureAwait(false))
+                {
+                    Console.WriteLine(response);
+                    sb.Append(response.Content);
+                }
+
+                chatMessages.AddAssistantMessage(sb.ToString());
+                Console.WriteLine();
+                message = null;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
-        await foreach (AgentResponseItem<ChatMessageContent> response in (agent.InvokeAsync("Write a haiku about Semantic Kernel. i need 8 raws.")).ConfigureAwait(false))
-        {
-            Console.WriteLine(response.Message);
-        }
+        // await foreach (StreamingChatMessageContent update in agent.InvokeStreamingAsync("Write a haiku about Semantic Kernel. i need 8 raws").ConfigureAwait(false))
+        // {
+        //     Console.Write(update);
+        // }
     }
 }
