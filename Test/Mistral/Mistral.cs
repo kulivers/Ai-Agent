@@ -71,6 +71,7 @@ public class MistralExample
                         if (!string.IsNullOrWhiteSpace(error))
                         {
                             Console.WriteLine(error);
+                            continue;
                         }
                     }
                     catch (Exception e)
