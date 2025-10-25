@@ -1,0 +1,16 @@
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.xml
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.deps.json
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.dll
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.pdb
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.Extensions.VectorData.Abstractions.dll
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.Extensions.VectorData.Abstractions.pdb
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\bin\Debug\netstandard2.0\Microsoft.Extensions.VectorData.Abstractions.xml
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.csproj.AssemblyReference.cache
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.AssemblyInfoInputs.cache
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.AssemblyInfo.cs
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.csproj.CoreCompileInputs.cache
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\Semantic.2C66650E.Up2Date
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.dll
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\Microsoft.SemanticKernel.Abstractions.pdb
+C:\dev\semantic-kernel\dotnet\src\SemanticKernel.Abstractions\obj\Debug\netstandard2.0\SemanticKernel.Abstractions.sourcelink.json
