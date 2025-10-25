@@ -128,14 +128,14 @@ public sealed class GigaChatAIPromptExecutionSettings : PromptExecutionSettings
     /// <item>To disable all tool calling, set the property to null (the default).</item>
     /// <item>
     /// To allow the model to request one of any number of functions, set the property to an
-    /// instance returned from <see cref="MistralAIToolCallBehavior.RequiredFunctions"/>, called with
+    /// instance returned from <see cref="GigaChatAIToolCallBehavior.RequiredFunctions"/>, called with
     /// a list of the functions available.
     /// </item>
     /// <item>
     /// To allow the model to request one of any of the functions in the supplied <see cref="Kernel"/>,
-    /// set the property to <see cref="MistralAIToolCallBehavior.EnableKernelFunctions"/> if the client should simply
+    /// set the property to <see cref="GigaChatAIToolCallBehavior.EnableKernelFunctions"/> if the client should simply
     /// send the information about the functions and not handle the response in any special manner, or
-    /// <see cref="MistralAIToolCallBehavior.AutoInvokeKernelFunctions"/> if the client should attempt to automatically
+    /// <see cref="GigaChatAIToolCallBehavior.AutoInvokeKernelFunctions"/> if the client should attempt to automatically
     /// invoke the function and send the result back to the service.
     /// </item>
     /// </list>
@@ -146,7 +146,7 @@ public sealed class GigaChatAIPromptExecutionSettings : PromptExecutionSettings
     /// the function, and sending back the result. The intermediate messages will be retained in the
     /// <see cref="ChatHistory"/> if an instance was provided.
     /// </remarks>
-    public MistralAIToolCallBehavior? ToolCallBehavior
+    public GigaChatAIToolCallBehavior? ToolCallBehavior
     {
         get => this._toolCallBehavior;
 
@@ -341,7 +341,7 @@ public sealed class GigaChatAIPromptExecutionSettings : PromptExecutionSettings
     private bool? _safePrompt = false;
     private int? _randomSeed;
     private string _apiVersion = "v1";
-    private MistralAIToolCallBehavior? _toolCallBehavior;
+    private GigaChatAIToolCallBehavior? _toolCallBehavior;
     private object? _responseFormat;
     private double? _presencePenalty;
     private double? _frequencyPenalty;

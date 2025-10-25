@@ -1,5 +1,7 @@
-﻿using Microsoft.SemanticKernel;
+﻿using FormulaParser;
+using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
+using Newtonsoft.Json;
 
 internal class Program
 {

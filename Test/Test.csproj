@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Agents\Core\Agents.Core.csproj" />
+      <ProjectReference Include="..\Connectors\Connectors.GigaChat\Connectors.GigaChat.csproj" />
       <ProjectReference Include="..\Connectors\Connectors.MistralAI\Connectors.MistralAI.csproj" />
     </ItemGroup>
 
@@ -16,6 +17,10 @@
       <Content Include="..\.gitignore">
         <Link>.gitignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" />
     </ItemGroup>
 
 </Project>

@@ -24,11 +24,11 @@ public class GigaChatExample
                 Instructions = "You are a helpful assistant.",
                 Kernel = kernel,
             };
-
-        await foreach (StreamingChatMessageContent update in agent.InvokeStreamingAsync("Write a haiku about Semantic Kernel. i need 8 raws").ConfigureAwait(false))
-        {
-            Console.Write(update);
-        }
+        //
+        // await foreach (StreamingChatMessageContent update in agent.InvokeStreamingAsync("Write a haiku about Semantic Kernel. i need 8 raws").ConfigureAwait(false))
+        // {
+        //     Console.Write(update);
+        // }
 
         await foreach (AgentResponseItem<ChatMessageContent> response in (agent.InvokeAsync("Write a haiku about Semantic Kernel. i need 8 raws.")).ConfigureAwait(false))
         {

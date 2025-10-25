@@ -1,0 +1,1613 @@
+[
+  {
+    "Name": "BOOL",
+    "Description": "Преобразует строку в логическое значение True или False.",
+    "Syntax": "BOOL ( string )",
+    "Arguments": "string — строка True или False (без учёта регистра). При некорректном значении аргумента ( 0, 1, истина, ложь и т. п.) функция возвращает пустое значение.",
+    "Result": "Логическое значение",
+    "Example": "BOOL ( 'TRUE' )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "CREATEDATE",
+    "Description": "Преобразует числовые аргументы (год, месяц, день, часы, минуты, секунды) в значение типа «Дата и время».",
+    "Syntax": "CREATEDATE ( year , month , day )",
+    "Arguments": "year, month, day, hour, minute, second: числа.",
+    "Result": "Дата и время",
+    "Example": "CREATEDATE ( 2025 , 5 , 5 , 15 , 45 , 15 )",
+    "ExampleResult": "05.05.2025 15:45:15"
+  },
+  {
+    "Name": "CREATEDATEUTC",
+    "Description": "Преобразует числовые аргументы (год, месяц, день, часы, минуты, секунды) в значение типа «Дата и время» в часовом поясе UTC+00:00.",
+    "Syntax": "CREATEDATEUTC ( year , month , day )",
+    "Arguments": "year, month, day, hour, minute, second: числа.",
+    "Result": "Дата и время",
+    "Example": "CREATEDATEUTC ( 2025 , 5 , 5 , 15 , 45 , 15 )",
+    "ExampleResult": "05.05.2025 15:45:15"
+  },
+  {
+    "Name": "DATE",
+    "Description": "Преобразует в строку в формате ISO 8601 в значение даты и времени. Функция возвращает значение в часовом поясе, заданном на сервере Comindware Platform. См. также « Форматирование значений в шаблонах экспорта и формулах» .",
+    "Syntax": "DATE ( string )",
+    "Arguments": "string: строка в формате YYYY-MM-DDThh:mm:ss±hh:mm YYYY-MM-DD — год, месяц, число; T — разделитель даты и времени; hh:mm:ss — часы, минуты, секунды; ±hh:mm — часовой пояс.",
+    "Result": "Дата и время",
+    "Example": "",
+    "ExampleResult": null
+  },
+  {
+    "Name": "DECIMAL",
+    "Description": "Преобразует строку в десятичное число.",
+    "Syntax": "DECIMAL ( string )",
+    "Arguments": "string — строка с числовым значением. Значение интерпретируется в соответствии с языком текущего аккаунта текущего пользователя, например: 10000, 10,5 для русского языка; 10000, 10.5 для английского языка. При неподходящих значениях аргумента (1 р., $50, 10 000 и т. п.) функция возвращает пустое значение.",
+    "Result": "Число",
+    "Example": "IF ( USER () -> language == 'ru' , DECIMAL ( REPLACE ( \"10000.5\" , \".\" , \",\" )), DECIMAL ( REPLACE ( \"10000,5\" , \",\" , \".\" )))",
+    "ExampleResult": "10000,5 для пользователей с любым языком аккаунта."
+  },
+  {
+    "Name": "DURATION",
+    "Description": "Преобразует строку в формате ISO 8601 в значение длительности. См. также « Форматирование значений в шаблонах экспорта и формулах» .",
+    "Syntax": "DURATION ( string )",
+    "Arguments": "string: строка в формате P<n>Y<n>M<n>DT<n>H<n>M<n>S <n> — число; P — префикс периода, обязательный; Y — годы; M — месяцы; W — недели; D — дни; T — префикс времени, используется только для указания времени; H — часы; M — минуты; S — секунды.",
+    "Result": "Длительность",
+    "Example": "",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ID",
+    "Description": "Преобразует строку в идентификатор объекта.",
+    "Syntax": "ID ( string )",
+    "Arguments": "string: строка с идентификатором объекта.",
+    "Result": "Идентификатор объекта",
+    "Example": "",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADD",
+    "Description": "Суммирует два значения типа « Число», «Дата и время» или « Длительность».",
+    "Syntax": "ADD ( argument1 , argument2 )",
+    "Arguments": "argument1 : число, argument2: число. argument1 : длительность, argument2: длительность. argument1 : дата и время, argument2: длительность.",
+    "Result": "ЧислоДлительность Дата и время",
+    "Example": "ADD ( DATE ( '2024-01-01T01:01:01' ), DURATION ( 'P3Y6M4DT12H30M5S' ))",
+    "ExampleResult": "03.07.2027 13:31:06"
+  },
+  {
+    "Name": "CEILING",
+    "Description": "Округляет аргумент до ближайшего бо́льшего целого.",
+    "Syntax": "CEILING ( number )",
+    "Arguments": "number — число, которое требуется округлить.",
+    "Result": "Число",
+    "Example": "CEILING ( 4 . 1 )",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "DIVIDE",
+    "Description": "Возвращает результат деления двух числовых аргументов.",
+    "Syntax": "DIVIDE ( dividend , divisor )",
+    "Arguments": "dividend: число, делимое divisor: число, делитель",
+    "Result": "Число",
+    "Example": "DIVIDE ( 125 , 25 )",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "FLOOR",
+    "Description": "Округляет число до ближайшего меньшего целого.",
+    "Syntax": "FLOOR ( number )",
+    "Arguments": "number: число.",
+    "Result": "Число",
+    "Example": "FLOOR ( 5 . 9 )",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "POW",
+    "Description": "Возводит первый аргумент в степень, указанную во втором аргументе, и возвращает результат.",
+    "Syntax": "POW ( base , degree )",
+    "Arguments": "base: число. degree: число.",
+    "Result": "Число",
+    "Example": "POW ( 2 , 8 )",
+    "ExampleResult": "256"
+  },
+  {
+    "Name": "PRODUCT",
+    "Description": "Перемножает два числовых аргумента.",
+    "Syntax": "PRODUCT ( number1 , number2 )",
+    "Arguments": "number1: число. number2: число.",
+    "Result": "Число",
+    "Example": "PRODUCT ( 3 , 4 )",
+    "ExampleResult": "12"
+  },
+  {
+    "Name": "QUOTIENT",
+    "Description": "Возвращает целую часть результата деления первого аргумента на второй.",
+    "Syntax": "QUOTIENT ( dividend , divisor )",
+    "Arguments": "dividend: число, делимое. divisor: число, делитель.",
+    "Result": "Число",
+    "Example": "QUOTIENT ( 5 , 2 )",
+    "ExampleResult": "2"
+  },
+  {
+    "Name": "REMAINDER",
+    "Description": "Возвращает остаток от деления первого аргумента на второй.",
+    "Syntax": "REMAINDER ( dividend , divisor )",
+    "Arguments": "dividend : число, делимое. divisor : число, делитель.",
+    "Result": "Число",
+    "Example": "REMAINDER ( 5 , 2 )",
+    "ExampleResult": "1"
+  },
+  {
+    "Name": "ROUND",
+    "Description": "Округляет число до ближайшего целого.",
+    "Syntax": "ROUND ( number )",
+    "Arguments": "number: число.",
+    "Result": "Число",
+    "Example": "ROUND ( 3 . 5 )",
+    "ExampleResult": "4"
+  },
+  {
+    "Name": "SQRT",
+    "Description": "Вычисляет квадратный корень аргумента.",
+    "Syntax": "SQRT ( number )",
+    "Arguments": "number: число.",
+    "Result": "Число",
+    "Example": "SQRT ( 25 )",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "SUBTRACT",
+    "Description": "Вычисляет разность двух аргументов типа « Число», « Длительность» или «Дата и время».",
+    "Syntax": "SUBTRACT ( argument1 , argument2 )",
+    "Arguments": "argument1 : число; argument2: число. argument1 : длительность; argument2: длительность. argument1 : дата и время; argument2: длительность. argument1 : дата и время; argument2: дата и время.",
+    "Result": "Число, длительность или дата и время.",
+    "Example": "SUBTRACT ( 17 , 10 )",
+    "ExampleResult": "7"
+  },
+  {
+    "Name": "EQUALS",
+    "Description": "Сравнивает два аргумента и возвращает True, если они равны, в противном случае возвращает False.",
+    "Syntax": "EQUALS ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: логическия значения, дата и время, длительность, числа, или строки.",
+    "Result": "Логическое значение",
+    "Example": "EQUALS ( \"string\" , 2 )",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "GREATER",
+    "Description": "Возвращает логическое значение True, если первый аргумент больше второго, в противном случае возвращает False.",
+    "Syntax": "GREATER ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: числа, строки, длительность или дата и время.",
+    "Result": "Логическое значение",
+    "Example": "GREATER ( 1 , 0 )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "GREATEREQ",
+    "Description": "Возвращает логическое значение True, если первый аргумент больше или равен второму, в противном случае возвращает False.",
+    "Syntax": "GREATEREQ ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: числа, строки, длительность или дата и время.",
+    "Result": "Логическое значение",
+    "Example": "GREATEREQ ( \"Строка\" , \"Сорока\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "LESS",
+    "Description": "Сравнивает два аргумента, возвращает логическое значение True, если первый аргумент меньше второго, в противном случае возвращает False. Строки сравниваются лексикографически — по алфавиту.",
+    "Syntax": "LESS ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: число, строка, длительность или дата и время.",
+    "Result": "Логическое значение",
+    "Example": "LESS ( 0 . 1 , 1 )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "LESSEQ",
+    "Description": "Сравнивает два аргумента, возвращает логическое значение True, если первый аргумент меньше или равено второму, в противном случае возвращает False. Строки сравниваются лексикографически — по алфавиту.",
+    "Syntax": "LESSEQ ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: число, строка, длительность или дата и время.",
+    "Result": "Логическое значение",
+    "Example": "LESSEQ ( 1 . 0 , 1 )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "NOTEQUALS",
+    "Description": "Сравнивает два аргумента одинакового типа и возвращает логическое значение True, если первый аргумент не равен второму, в противном случае возвращает False.",
+    "Syntax": "NOTEQUALS ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: строка, логическое значение, дата и время, число или длительность.",
+    "Result": "Логическое значение",
+    "Example": "NOTEQUALS ( \"Строка\" , \"Сорока\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ALL",
+    "Description": "Принимает список логических значений и возвращает True, если все они имеют значение True.",
+    "Syntax": "ALL ( listBool )",
+    "Arguments": "listBool : список логических значений или выражений, возвращающих логические значения.",
+    "Result": "Логическое значение",
+    "Example": "ALL ( LIST ( BOOL ( \"True\" ), BOOL ( \"True\" ), BOOL ( \"False\" )))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "AND",
+    "Description": "Принимает два логических аргумента и возвращает результат их логического умножения (конъюнкции).",
+    "Syntax": "AND ( bool1 , bool2 )",
+    "Arguments": "bool1 , bool2: логические значения или выражения, возвращающие логическое значение.",
+    "Result": "Логическое значение",
+    "Example": "AND ( BOOL ( \"True\" ), BOOL ( \"True\" ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ANY",
+    "Description": "Проверка на непустую последовательность. Проверяет список или набор данных на наличие значений. Возвращает True, если аргумент содержит хотя бы одно значение.",
+    "Syntax": "ANY ( dataset )",
+    "Arguments": "dataset: список значений или набор данных (например сформированный с помощью запроса вида from ... where ... select).",
+    "Result": "Логическое значение",
+    "Example": "ANY ( from in db -> Tickets where i -> product == \"Data Monsoon\" select i -> name )",
+    "ExampleResult": "True, если запрос вернёт хотя бы один элемент."
+  },
+  {
+    "Name": "IF",
+    "Description": "Выполняет тренарную операцию. Принимает три аргумента. Если первый аргумент равен True, возвращает второй аргумент в противном случае возвращает третий аргумент.",
+    "Syntax": "IF ( condition , resultTrue , resultFalse )",
+    "Arguments": "condition : логическое значение или выражение, возвращающее логическое значение. resultTrue : значение любого типа, возвращаемое, когда condition равно True. resultFalse : значение любого типа, возвращаемое, когда condition не равно True.",
+    "Result": "Тип возвращаемого значения совпадает с типом аргамента resultTrue или resultFalse.",
+    "Example": "IF ( 1 == 2 , \"Верно\" , \"Не верно\" )",
+    "ExampleResult": "Не верно"
+  },
+  {
+    "Name": "NOT",
+    "Description": "Принимает логический аргумент и выполняет над ним операцию отрицания: возвращает логическое значение True, если аргумент имеет значение False и наоборот.",
+    "Syntax": "NOT ( boolean )",
+    "Arguments": "boolean: логическое значение.",
+    "Result": "Логическое значение",
+    "Example": "NOT ( EMPTY ( NOW ()))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "OR",
+    "Description": "Принимает два логических аргумента и возвращает результат их логического сложения (дизъюнкции).",
+    "Syntax": "OR ( boolean1 , boolean2 )",
+    "Arguments": "boolean1 , boolean2: логическоие значения.",
+    "Result": "Логическое значение",
+    "Example": "OR ( BOOL ( \"True\" ), BOOL ( \"False\" ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ASCENDING",
+    "Description": "Сортирует элементы списка в порядке возрастания.",
+    "Syntax": "ASCENDING ( list )",
+    "Arguments": "list: список чисел или строк",
+    "Result": "Список",
+    "Example": "ASCENDING ( 'в' , 'а' , 'б' )",
+    "ExampleResult": "а, б, в"
+  },
+  {
+    "Name": "AVERAGE",
+    "Description": "Возвращает среднее арифметическое значение аргументов.",
+    "Syntax": "AVERAGE ( argument1 , ... argumentN )",
+    "Arguments": "argument1 , argumentN: числа",
+    "Result": "Число",
+    "Example": "AVERAGE ( 1 , 3 , 4 , 7 , 10 )",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "COUNT",
+    "Description": "Возвращает количество элементов в списке.",
+    "Syntax": "COUNT ( list )",
+    "Arguments": "list: список элементов",
+    "Result": "Число",
+    "Example": "COUNT ( LIST ( \"a\" , 2 , \"c\" , \"d\" , 5 ))",
+    "ExampleResult": "5"
+  },
+  {
+    "Name": "DESCENDING",
+    "Description": "Сортирует элементы списка в порядке возрастания.",
+    "Syntax": "DESCENDING ( list )",
+    "Arguments": "list: список чисел или строк",
+    "Result": "Отсортированный список значений",
+    "Example": "DESCENDING ( 'а' , 'б' , 'в' )",
+    "ExampleResult": "в, б, а"
+  },
+  {
+    "Name": "DISTINCT",
+    "Description": "Удаляет дубликаты элементов из списка.",
+    "Syntax": "DISTINCT ( list )",
+    "Arguments": "list: список чисел или строк",
+    "Result": "Список уникальных значений",
+    "Example": "DISTINCT ( LIST ( 'а' , 'а' , 'в' , 'б' , 'Б' , 'в' ))",
+    "ExampleResult": "а, б, Б, в"
+  },
+  {
+    "Name": "FIRST",
+    "Description": "Возвращает первый элемент списка. При отсутствии элементов возвращает пустое значение.",
+    "Syntax": "FIRST ( list )",
+    "Arguments": "list: список значений.",
+    "Result": "Тип возвращаемого значения совпадает с типом элементов списка.",
+    "Example": "FIRST (( from i in db -> music where i -> album == 'Whale Meditation' select i -> song ))",
+    "ExampleResult": "название первой песни из альбома Whale Meditation."
+  },
+  {
+    "Name": "LAST",
+    "Description": "Возвращает последний элемент списка. При отсутствии элементов возвращает пустое значение.",
+    "Syntax": "LAST ( list )",
+    "Arguments": "list: список значений.",
+    "Result": "Тип возвращаемого значения совпадает с типом элементов списка.",
+    "Example": "LAST (( from i in db -> music where i -> album == 'Whale Meditation' select i -> song ))",
+    "ExampleResult": "название последней песни из альбома Whale Meditation."
+  },
+  {
+    "Name": "LIST",
+    "Description": "Принимает любое количество аргументов любых типов, разделённых запятыми, и возвращает список.",
+    "Syntax": "LIST ( argument1 , … , argumentN )",
+    "Arguments": "argument1, …, argumentN: значения любых типов.",
+    "Result": "Cписок значений таких же типов, как аргументы",
+    "Example": "LIST ( 1 , 2 , \"a\" , \"b\" )",
+    "ExampleResult": "[1, 2, \"a\", \"b\"]."
+  },
+  {
+    "Name": "LISTEQUALS",
+    "Description": "Сравнивает два списка значений. Если они совпадают, возвращает логическое значение True, в противном случае возвращает False.",
+    "Syntax": "LISTEQUALS ( list1 , list2 )",
+    "Arguments": "list1 , list2: списки значений.",
+    "Result": "Логическое значение",
+    "Example": "LISTEQUALS ( LIST ( 1 , 2 ), LIST ( \"1\" , \"2\" ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "MAX",
+    "Description": "Принимает список значений и возвращает максимальное из значений его элементов. Все элементы списка должны быть одинакового типа: « Число», «Дата и время» или « Длительность».",
+    "Syntax": "MAX ( list )",
+    "Arguments": "list: список значений типа « Число», «Дата и время» или « Длительность»",
+    "Result": "Тип возвращаемого значения совпадает с типом элементов списка",
+    "Example": "MAX ( DURATION ( 'P2DT1H0M0S' ), DURATION ( 'P3DT1H0M0S' ))",
+    "ExampleResult": "3.01:00:00"
+  },
+  {
+    "Name": "MIN",
+    "Description": "Принимает список значений и возвращает минимальное из значений его элементов. Все элементы списка должны быть одинакового типа: « Число», «Дата и время» или « Длительность».",
+    "Syntax": "MIN ( list )",
+    "Arguments": "list: список значений типа « Число», «Дата и время» или « Длительность»",
+    "Result": "Тип возвращаемого значения совпадает с типом элементов списка",
+    "Example": "MIN ( DURATION ( 'P2DT1H0M0S' ), DURATION ( 'P3DT1H0M0S' ))",
+    "ExampleResult": "2.01:00:00"
+  },
+  {
+    "Name": "SUM",
+    "Description": "Принимает любое количество аргументов типа « Число» или « Длительность», перечисленных через запятую, и возвращает их сумму.",
+    "Syntax": "SUM ( argument1 , ..., argumentN )",
+    "Arguments": "argument1, ..., argumentN: числа или длительность.",
+    "Result": "Тип возвращаемого значения совпадает с типом аргументов",
+    "Example": "SUM ( 1 , 2 , 3 , 4 )",
+    "ExampleResult": "10"
+  },
+  {
+    "Name": "UNION",
+    "Description": "Объединяет в один список два объекта или два списка объектов (ID записей или экземпляров процесса).",
+    "Syntax": "UNION ( object1 , object2 )",
+    "Arguments": "object1, object2: объекты или списки объектов.",
+    "Result": "Список записей",
+    "Example": "UNION ( from i in db -> music where i -> album == 'Whale Meditation' select i -> id , from i in db -> music where i -> album == 'Bird Song' select i -> id )",
+    "ExampleResult": "список ID песен из альбомов Whale Meditation и Bird Song."
+  },
+  {
+    "Name": "EMPTY",
+    "Description": "Проверяет, является ли пустым значение аргумента. Возвращает логическое значение True, если значение пустое, в противном случае возвращает False.",
+    "Syntax": "EMPTY ( argument )",
+    "Arguments": "argument : атрибут или выражение.",
+    "Result": "Логическое значение",
+    "Example": "EMPTY ( DIVIDE ( 3 , 3 ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "ENUMVALUE",
+    "Description": "Принимает системное имя атрибута атрибута типа «Список значений» и системное имя его значения и вовзрращает ID этого значения.",
+    "Syntax": "ENUMVALUE ( \"enumAttributeSystemName\" , \"enumValueSystemName\" )",
+    "Arguments": "enumAttributeSystemName : строка, системное имя атрибута типа «Список значений». enumValueSystemName : строка, системное имя одного из значений атрибута типа «Список значений».",
+    "Result": "Строку с ID искомого значения атрибута.",
+    "Example": "EQUALS ( $ Status , ID ( ENUMVALUE ( \"Status\" , \"Resolved\" )))",
+    "ExampleResult": "True, если атрибут Status имеет значение Resolved."
+  },
+  {
+    "Name": "OBJECT",
+    "Description": "Принимает четыре строковых аргумента: системные имена приложения, шаблона и атрибута, а также значение атрибута типа « Текст». Возвращает список ID записей из указанного шаблона, в которых указанный атрибут имеет заданное значение.",
+    "Syntax": "OBJECT ( \"businessApp\" , \"template\" , \"attribute\" , \"attributeValue\" )",
+    "Arguments": "businessApp : строка, системное имя приложения. template: строка, системное имя шаблона. attribute : строка, системное имя атрибута. attributeValue : строка, искомое значение атрибута.",
+    "Result": "Список",
+    "Example": "OBJECT ( \"Fleetmanagement\" , \"Requests\" , \"Status\" , \"Завершено\" )",
+    "ExampleResult": "список ID записей шаблона «Заявки» (системное имя — Requests) приложения «Управление автопарком» (системное имя — Fleetmanagement), у которых значение атрибута «Статус» (системное имя — Status) равно Завершено."
+  },
+  {
+    "Name": "USER",
+    "Description": "Возвращает идентификатор аккаунта текущего пользователя.",
+    "Syntax": "USER ()",
+    "Arguments": "Не требуются.",
+    "Result": "Идентификатор аккаунта",
+    "Example": "USER ()",
+    "ExampleResult": "account.XX — ID аккаунта, который просматривает запись."
+  },
+  {
+    "Name": "VALUE",
+    "Description": "Принимает два аргумента: проверяемое выражение и значение по умолчанию. Возвращает значение первого аргумента, если оно не пустое и не равно NULL, в противном случае возвращает значение второго аргумента, если он есть.",
+    "Syntax": "VALUE ( argument , defaultValue )",
+    "Arguments": "argument: проверяемое выражение, возвращающее значение любого типа. defaultValue : значение по умолчанию любого типа (необязательный аргумент).",
+    "Result": "Тип возвращаемого значения совпадает с типом первого или второго аргумента.",
+    "Example": "VALUE ( $ Amount , \"Не заполнено поле Amount\" )",
+    "ExampleResult": "значение атрибута Amount, если оно не пустое. В противном случае — текст «Не заполнено поле Amount»."
+  },
+  {
+    "Name": "CONCAT",
+    "Description": "Объединяет строки из списка в одну строку.",
+    "Syntax": "CONCAT ( list )",
+    "Arguments": "list — список строк, которые требуется объединить.",
+    "Result": "Строка",
+    "Example": "CONCAT ( LIST ( \"Сумма доходов равна: \" , \"100000\" ))",
+    "ExampleResult": "Сумма доходов равна: 100000"
+  },
+  {
+    "Name": "CONTAINS",
+    "Description": "Ищет подстроку в строке. Если первая строка содержит вторую, возвращает логическое значение True.",
+    "Syntax": "CONTAINS ( string , substring )",
+    "Arguments": "string — строка, в которой происходит поиск подстроки. substring — подстрока, которую требуется найти.",
+    "Result": "Логическое значение",
+    "Example": "CONTAINS ( \"Это срочная заявка.\" , \"срочн\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ENDSWITH",
+    "Description": "Сравнивает две строки и возвращает значение True, если первая строка оканчивается на вторую, в противном случае возвращает False.",
+    "Syntax": "ENDSWITH ( string , endString )",
+    "Arguments": "string, endString: строка.",
+    "Result": "Логическое значение",
+    "Example": "ENDSWITH ( \"Строка\" , \"ка\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "FIRSTCAPITAL",
+    "Description": "Преобразует первую букву строки в прописную (заглавную).",
+    "Syntax": "FIRSTCAPITAL ( string )",
+    "Arguments": "string: строка.",
+    "Result": "Строка.",
+    "Example": "FIRSTCAPITAL ( \"строка\" )",
+    "ExampleResult": "Строка"
+  },
+  {
+    "Name": "FORMAT",
+    "Description": "Принимает строку с заполнителями вида {0}… {N} и список значений. Подставляет значения из списка в соответствующие заполнители, форматирует их по заданному шаблону и возвращает результирующую строку. См. также « Форматирование значений в шаблонах экспорта и формулах» .",
+    "Syntax": "FORMAT ( \"stringToFormat {0} {1} ... {N}\" , LIST ( argument0 , argument1 , ..., valueN ))",
+    "Arguments": "\"stringToFormat {0} {1} ... {N}\": строка с заменителями. LIST(argument0, argument1, ..., argumentN) : список значений любых типов.",
+    "Result": "Строка",
+    "Example": "FORMAT ( \"Название: {0}, исполнитель: {1}, дата релиза: {2:dd MMMM yyyy 'г.'}\" , LIST ( \"Yesterday\" , \"Beatles\" , DATE ( \"1965-06-14\" )) )",
+    "ExampleResult": "Название: Yesterday, исполнитель: Beatles, дата релиза: 14 июня 1965 г."
+  },
+  {
+    "Name": "INDEXOF",
+    "Description": "Ищет подстроку в строке. Возвращает номер позиции (по умолчанию поиск отсчёт идёт от 0) искомой строки в исходной строке. Также можно указать номер начальной позиции для поиска.",
+    "Syntax": "INDEXOF ( sourceString , stringToFind , startIndex )",
+    "Arguments": "sourceString : исходная строка. stringToFind : искомая строка. startIndex : номер начальной позиции для поиска (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "INDEXOF ( \"У ёлки иголки колки.\" , \"лки\" , 4 )",
+    "ExampleResult": "10"
+  },
+  {
+    "Name": "JOIN",
+    "Description": "Объединяет строки с использованием заданного разделителя.",
+    "Syntax": "JOIN ( separator , stringList )",
+    "Arguments": "separator: строка, разделитель объединяемых строк. stringList : список строк, которые требуется объединить.",
+    "Result": "Строка",
+    "Example": "JOIN ( \", \" , LIST ( \"Аналитик\" , \"Архитектор\" , \"Администратор\" ))",
+    "ExampleResult": "Аналитик, Архитектор, Администратор"
+  },
+  {
+    "Name": "LENGTH",
+    "Description": "Возвращает количество символов в строке.",
+    "Syntax": "LENGTH ( string )",
+    "Arguments": "string: строка",
+    "Result": "Число",
+    "Example": "LENGTH ( \"В этой строке 26 символов.\" )",
+    "ExampleResult": "26"
+  },
+  {
+    "Name": "MATCHES",
+    "Description": "Принимает строку и регулярное выражение. Возвращает логическое значение True, если часть строки или вся строка соответствует регулярному выражению. В противном случае возвращает False. Для изучения и отладки регулярных выражений можно воспользоваться следующим инструментом: https://regex101.com",
+    "Syntax": "MATCHES ( string , regex )",
+    "Arguments": "string: строка. regex: строка с регулярным выражением.",
+    "Result": "Логическое значение",
+    "Example": "MATCHES ( \"Требуется решить проблему срочно!\" , \"[Cс]рочн.+?\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "NORMALIZE",
+    "Description": "Убирает лишние пробелы из строкового аргумента.",
+    "Syntax": "NORMALIZE ( string )",
+    "Arguments": "string: строка.",
+    "Result": "Строка",
+    "Example": "NORMALIZE ( \"В этой строке были лишние пробелы, но теперь их нет.\" )",
+    "ExampleResult": "В этой строке были лишние пробелы, но теперь их нет."
+  },
+  {
+    "Name": "NOTMATCHES",
+    "Description": "Принимает строку и регулярное выражение. Возвращает логическое значение True, если часть строки или вся строка не соответствует регулярному выражению. В противном случае возвращает False. Для изучения и отладки регулярных выражений можно воспользоваться следующим инструментом: https://regex101.com",
+    "Syntax": "NOTMATCHES ( string , regex )",
+    "Arguments": "string: строка. regex: строка, задающая регулярное выражение.",
+    "Result": "Логическое значение",
+    "Example": "NOTMATCHES ( \"Требуется решить проблему срочно!\" , \"[Cс]рочн.+?\" )",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "REGEXREPLACE",
+    "Description": "Принимает три строковых аргумента: исходную строку, регулярное выражение, замещающую строку. Находит в исходной строке подстроки по регулярному выражению, заменяет найденные подстроки замещающей строкой и возвращает результирующую строку. Для изучения и отладки регулярных выражений можно воспользоваться следующим инструментом: https://regex101.com",
+    "Syntax": "REGEXREPLACE ( sourceString , regEx , replacementString )",
+    "Arguments": "sourceString : исходная строка. regEx: строка с регулярным выражением. replacementString : замещающая строка.",
+    "Result": "Строка",
+    "Example": "REGEXREPLACE ( \"Фамилия Имя Отчество\" , \"(.+) (.+) (.+)\" , \"$2\" )",
+    "ExampleResult": "Имя"
+  },
+  {
+    "Name": "REPLACE",
+    "Description": "Принимает три строки: исходную, искомую и замещающую. Заменяет все вхождения искомой строки в исходной строке на замещающую строку.",
+    "Syntax": "REPLACE ( string , subString , replacementString )",
+    "Arguments": "string, subString, replacementString: строки",
+    "Result": "Строка",
+    "Example": "REPLACE ( \"Заявка утверждена.\" , \"утверждена\" , \"одобрена\" )",
+    "ExampleResult": "Заявка одобрена."
+  },
+  {
+    "Name": "TOLOWER",
+    "Description": "Приводит все буквы в строке к нижнему регистру (строчным буквам).",
+    "Syntax": "TOLOWER ( string )",
+    "Arguments": "string: строка.",
+    "Result": "Строка",
+    "Example": "TOLOWER ( \"Все Буквы В ЭТОЙ Строке Стали Строчными.\" )",
+    "ExampleResult": "все буквы в этой строке стали строчными."
+  },
+  {
+    "Name": "TOUPPER",
+    "Description": "Приводит все буквы в строке к верхнему регистру (прописным буквам).",
+    "Syntax": "TOUPPER ( string )",
+    "Arguments": "string: строка.",
+    "Result": "Строка",
+    "Example": "TOUPPER ( \"Все Буквы В Этой Строке Стали прописными.\" )",
+    "ExampleResult": "ВСЕ БУКВЫ В ЭТОЙ СТРОКЕ СТАЛИ ПРОПИСНЫМИ."
+  },
+  {
+    "Name": "TRIM",
+    "Description": "Удаляет пробелы в начале и конце строки.",
+    "Syntax": "TRIM ( string )",
+    "Arguments": "string: строка.",
+    "Result": "Строка",
+    "Example": "TRIM ( \" В этой строке были лишние пробелы. \" )",
+    "ExampleResult": "В этой строке были лишние пробелы."
+  },
+  {
+    "Name": "STARTSWITH",
+    "Description": "Сравнивает две строки и возвращает значение True, если первая строка начинается на вторую, в противном случае возвращает False.",
+    "Syntax": "STARTSWITH ( string , startString )",
+    "Arguments": "string, startString: строка.",
+    "Result": "Логическое значение",
+    "Example": "STARTSWITH ( \"Строка\" , \"Стр\" )",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "SUBSTRING",
+    "Description": "Принимает три аргумента: строку и два числа. Извлекает из исходной строки подстроку начиная с заданной позиции до конца исходной строки либо до указанной длины подстроки.",
+    "Syntax": "SUBSTRING ( sourceString , startIndex , numberOfChars )",
+    "Arguments": "sourceString : строка. startIndex : номер позиции начала подстроки, отсчитывается от 0. numberOfChars : количество символов в подстроке (необязательный аргумент).",
+    "Result": "Строка",
+    "Example": "SUBSTRING ( \"Раньше эта строка начиналась с другого слова.\" , 7 , 31 )",
+    "ExampleResult": "эта строка начиналась с другого"
+  },
+  {
+    "Name": "ADDDAYS",
+    "Description": "Прибавляет указанное количество дней к значению типа «Дата и время».",
+    "Syntax": "ADDDAYS ( dateTime , numberOfDays )",
+    "Arguments": "dateTime: дата и время. numberOfDays : количество дней, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDDAYS ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "04.01.2024 1:01:01"
+  },
+  {
+    "Name": "ADDDAYSUTC",
+    "Description": "Прибавляет указанное количество дней к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDDAYSUTC ( dateTime , numberOfDays )",
+    "Arguments": "dateTime: дата и время. numberOfDays : количество дней, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDDAYSUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDDUR",
+    "Description": "Суммирует два значения типа « Длительность».",
+    "Syntax": "ADDDUR ( duration1 , duration2 )",
+    "Arguments": "duration1 , duration2: длительность.",
+    "Result": "Длительность",
+    "Example": "ADDDUR ( DURATION ( 'P1DT12H30M5S' ), DURATION ( 'P1DT12H30M5S' ))",
+    "ExampleResult": "3 д 1 ч 10 с"
+  },
+  {
+    "Name": "ADDHOURS",
+    "Description": "Прибавляет указанное количество часов к значению типа «Дата и время».",
+    "Syntax": "ADDHOURS ( dateTime , numberOfHours )",
+    "Arguments": "dateTime: дата и время. numberOfHours : количество часов, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDHOURS ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "01.01.2024 4:01:01"
+  },
+  {
+    "Name": "ADDHOURSUTC",
+    "Description": "Прибавляет указанное количество часов к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDHOURSUTC ( dateTime , numberOfHours )",
+    "Arguments": "dateTime: дата и время. numberOfHours : количество часов, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDHOURSUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDLOC",
+    "Description": "Прибавляет значение типа « Длительность» к значению типа «Дата и время».",
+    "Syntax": "ADDLOC ( dateTime , duration )",
+    "Arguments": "dateTime: дата и время. duration: длительность, которую требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDLOC ( DATE ( '2024-01-01T01:01:01' ), DURATION ( 'P1DT12H30M5S' ))",
+    "ExampleResult": "02.01.2024 13:31:06"
+  },
+  {
+    "Name": "ADDMINUTES",
+    "Description": "Прибавляет указанное количество минут к значению типа «Дата и время».",
+    "Syntax": "ADDMINUTES ( dateTime , numberOfMinutes )",
+    "Arguments": "dateTime: дата и время. numberOfMinutes : количество минут, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDMINUTES ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "01.01.2024 01:04:01"
+  },
+  {
+    "Name": "ADDMINUTESUTC",
+    "Description": "Прибавляет указанное количество минут к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDMINUTESUTC ( dateTime , numberOfMinutes )",
+    "Arguments": "dateTime: дата и время. numberOfMinutes : количество минут, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDMINUTESUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDMONTHS",
+    "Description": "Прибавляет указанное количество месяцев к значению типа «Дата и время».",
+    "Syntax": "ADDMONTHS ( dateTime , numberOfMonths )",
+    "Arguments": "dateTime: дата и время. numberOfMonths : количество месяцев, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDMONTHS ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "01.04.2024 1:01:01"
+  },
+  {
+    "Name": "ADDMONTHSUTC",
+    "Description": "Прибавляет указанное количество месяцев к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDMONTHSUTC ( dateTime , numberOfMonths )",
+    "Arguments": "dateTime: дата и время. numberOfMonths : количество месяцев, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDMONTHSUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDSECONDS",
+    "Description": "Прибавляет указанное количество секунд к значению типа «Дата и время».",
+    "Syntax": "ADDSECONDS ( dateTime , numberOfSeconds )",
+    "Arguments": "dateTime: дата и время. numberOfSeconds : количество секунд, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDSECONDS ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "01.01.2024 1:01:04"
+  },
+  {
+    "Name": "ADDSECONDSUTC",
+    "Description": "Прибавляет указанное количество секунд к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDSECONDSUTC ( dateTime , numberOfSeconds )",
+    "Arguments": "dateTime: дата и время. numberOfSeconds : количество секунд, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDSECONDSUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDUTC",
+    "Description": "Прибавляет значение типа « Длительность» к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDUTC ( dateTime , duration )",
+    "Arguments": "dateTime: дата и время. duration: длительность, которую требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), DURATION ( 'P1DT12H30M5S' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ADDYEARS",
+    "Description": "Прибавляет указанное количество лет к значению типа «Дата и время».",
+    "Syntax": "ADDYEARS ( dateTime , numberOfYears )",
+    "Arguments": "dateTime: дата и время. numberOfYears : количество лет, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDYEARS ( DATE ( '2024-01-01T01:01:01' ), 3 )",
+    "ExampleResult": "01.01.2027 1:01:01"
+  },
+  {
+    "Name": "ADDYEARSUTC",
+    "Description": "Прибавляет указанное количество лет к значению типа «Дата и время» и переводит результат в часовой пояс UTC+00:00.",
+    "Syntax": "ADDYEARSUTC ( dateTime , numberOfYears )",
+    "Arguments": "dateTime: дата и время. numberOfYears : количество лет, которое требуется прибавить.",
+    "Result": "Дата и время",
+    "Example": "ADDYEARSUTC ( DATE ( '2024-01-01T01:01:01+00:00' ), 3 )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "BETWEEN",
+    "Description": "Возвращает True, если значение типа «Дата и время» или « Длительность» входит в заданный диапазон.",
+    "Syntax": "BETWEEN ( value , min , max )",
+    "Arguments": "value — дата и время или длительность для проверки. min — начальное значение диапазона. max — конечное значение диапазона.",
+    "Result": "Логическое значение",
+    "Example": "BETWEEN ( DURATION ( \"PT3H15M\" ), DURATION ( \"PT3H1M\" ), DURATION ( \"PT3H25M\" ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "BETWEENUTC",
+    "Description": "Возвращает True, если значение типа «Дата и время» или « Длительность» входит в заданный диапазон. Приводит значения типа «Дата и время» к часовому поясу UTC+00:00.",
+    "Syntax": "BETWEENUTC ( value , min , max )",
+    "Arguments": "value — дата и время или длительность для проверки. min — начальное значение диапазона. max — конечное значение диапазона.",
+    "Result": "Логическое значение",
+    "Example": "BETWEENUTC ( DATE ( \"2025-01-15+00:00\" ), DATE ( \"2024-02-15+01:00\" ), DATE ( \"2024-08-15-01:00\" ) )",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "CENTURY",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает число, соответствующее веку аргумента.",
+    "Syntax": "CENTURY ( dateTime )",
+    "Arguments": "dateTime — дата, для которой требуется определить век.",
+    "Result": "Число",
+    "Example": "CENTURY ( DATE ( \"2000-01-01T05:45:15\" ))",
+    "ExampleResult": "21"
+  },
+  {
+    "Name": "CENTURYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает номер века, на который приходится результирующая дата.",
+    "Syntax": "CENTURYUTC ( dateTime )",
+    "Arguments": "dateTime — дата, для которой требуется определить век.",
+    "Result": "Число",
+    "Example": "CENTURYUTC ( DATE ( \"2000-01-01T05:45:15+10:00\" ))",
+    "ExampleResult": "20"
+  },
+  {
+    "Name": "COMPARE",
+    "Description": "Сравнивает два значения типа « Длительность» и возвращает целое число: 1, если первый аргумент больше второго; 0, если аргументы равны; -1, если первый аргумент меньше второго.",
+    "Syntax": "COMPARE ( duration1 , duration2 )",
+    "Arguments": "duration1 , duration2: длительность.",
+    "Result": "Число",
+    "Example": "COMPARE ( DURATION ( \"PT3H15M\" ), DURATION ( \"PT3H16M\" ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "CONVERTTIMEZONE",
+    "Description": "Переводит значение типа «Дата и время» в заданный часовой пояс в формате IANA.",
+    "Syntax": "CONVERTTIMEZONE ( dateTime , timeZone )",
+    "Arguments": "dateTime — дата и время. timeZone — строка, задающая часовой пояс в формате IANA.",
+    "Result": "Дата и время",
+    "Example": "CONVERTTIMEZONE ( DATE ( \"2025-05-05T13:45:15+00:00\" ), \"Europe/London\" )",
+    "ExampleResult": null
+  },
+  {
+    "Name": "CONVERTTIMEZONEUTC",
+    "Description": "Переводит значение типа «Дата и время» в часовой пояс UTC+00:00, а затем в заданный часовой пояс в формате IANA.",
+    "Syntax": "CONVERTTIMEZONEUTC ( dateTime , timeZone )",
+    "Arguments": "dateTime — дата и время. timeZone — строка, задающая часовой пояс в формате IANA.",
+    "Result": "Дата и время",
+    "Example": "CONVERTTIMEZONEUTC ( DATE ( \"2025-05-05T13:45:15+00:00\" ), \"Europe/Moscow\" )",
+    "ExampleResult": "05.05.2025 16:45:15"
+  },
+  {
+    "Name": "DAY",
+    "Description": "Принимает значение типа «Дата и время» и строку с часовым поясом в формате IANA. Возвращает число месяца, на которое приходится указанная дата с учётом часового пояса.",
+    "Syntax": "DAY ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "DAY ( DATE ( \"2025-05-05T23:45:15+00:00\" ), \"Europe/Moscow\" )",
+    "ExampleResult": "6"
+  },
+  {
+    "Name": "DAYOFWEEK",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает название соответствующего дня недели.",
+    "Syntax": "DAYOFWEEK ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "DAYOFWEEK ( DATE ( \"2025-05-05T23:45:15\" ))",
+    "ExampleResult": "понедельник"
+  },
+  {
+    "Name": "DAYOFWEEKUTC",
+    "Description": "Принимает аргумент типа «Дата и время» переводит его в часовой пояс UTC+00:00 и возвращает название дня недели, на который приходится результирующая дата.",
+    "Syntax": "DAYOFWEEKUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "DAYOFWEEKUTC ( DATE ( \"2025-05-05T20:45:15-01:00\" ))",
+    "ExampleResult": "понедельник"
+  },
+  {
+    "Name": "DAYOFYEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает номер дня соответствующего года.",
+    "Syntax": "DAYOFYEAR ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "DAYOFYEAR ( DATE ( \"2025-05-05T23:45:15\" ))",
+    "ExampleResult": "125"
+  },
+  {
+    "Name": "DAYOFYEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает номер дня года, на который приходится результирующая дата.",
+    "Syntax": "DAYOFYEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "DAYOFYEARUTC ( DATE ( \"2025-05-05T23:45:15+00:00\" ))",
+    "ExampleResult": "125"
+  },
+  {
+    "Name": "DAYS",
+    "Description": "Преобразует значение типа « Длительность» в десятичное число, представляющее количество дней.",
+    "Syntax": "DAYS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "DAYS ( DURATION ( 'P12DT64H75M1360S' ))",
+    "ExampleResult": "14,7344907407407"
+  },
+  {
+    "Name": "DAYSINMONTH",
+    "Description": "Принимает аргумент типа «Дата и время» или два аргумента типа « Число» — год и месяц. Возвращает количество дней в соответствующем месяце.",
+    "Syntax": "DAYSINMONTH ( dateTime )",
+    "Arguments": "dateTime: дата и время. year, month: числа.",
+    "Result": "Число",
+    "Example": "DAYSINMONTH ( 2024 , 02 )",
+    "ExampleResult": "29"
+  },
+  {
+    "Name": "DAYSINMONTHUTC",
+    "Description": "Принимает аргумент типа «Дата и время» или два аргумента типа « Число» — год и месяц. Преобразует дату и время в часовой пояс UTC+00:00. Возвращает количество дней в результирующем месяце.",
+    "Syntax": "DAYSINMONTHUTC ( dateTime )",
+    "Arguments": "dateTime: дата и время. year, month: числа.",
+    "Result": "Число",
+    "Example": "DAYSINMONTHUTC ( 2025 , 02 )",
+    "ExampleResult": "28"
+  },
+  {
+    "Name": "DAYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает число месяца, на который приходится результирующая дата.",
+    "Syntax": "DAYUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "DAYUTC ( DATE ( \"2025-04-30T23:45:15-02:00\" ))",
+    "ExampleResult": "1"
+  },
+  {
+    "Name": "ENDOFDAY",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время окончания соответствующего дня.",
+    "Syntax": "ENDOFDAY ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFDAY ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "05.05.2025 23:59:59"
+  },
+  {
+    "Name": "ENDOFDAYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время окончания результирующего дня.",
+    "Syntax": "ENDOFDAYUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFDAYUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ENDOFMONTH",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время окончания соответствующего месяца.",
+    "Syntax": "ENDOFMONTH ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFMONTH ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "31.05.2025 23:59:59"
+  },
+  {
+    "Name": "ENDOFMONTHUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время окончания месяца, на который приходится результирующая дата.",
+    "Syntax": "ENDOFMONTHUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFMONTHUTC ( DATE ( '2025-05-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ENDOFQUARTER",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время окончания соответствующего квартала.",
+    "Syntax": "ENDOFQUARTER ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFQUARTER ( DATE ( '2025-04-01T01:01:01' ))",
+    "ExampleResult": "30.06.2025 23:59:59"
+  },
+  {
+    "Name": "ENDOFQUARTERUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время окончания квартала, на который приходится результирующая дата.",
+    "Syntax": "ENDOFQUARTERUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFQUARTERUTC ( DATE ( '2025-04-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ENDOFWEEK",
+    "Description": "Принимает аргумент типа «Дата и время», и возвращает дату и время окончания соответствующей недели.",
+    "Syntax": "ENDOFWEEK ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFWEEK ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "11.05.2025 23:59:59"
+  },
+  {
+    "Name": "ENDOFWEEKUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время окончания недели, на которую приходится результирующая дата.",
+    "Syntax": "ENDOFWEEKUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFWEEKUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "ENDOFYEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время окончания соответствующего года.",
+    "Syntax": "ENDOFYEAR ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFYEAR ( DATE ( '2025-01-01T01:01:01' ))",
+    "ExampleResult": "31.12.2025 23:59:59"
+  },
+  {
+    "Name": "ENDOFYEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время окончания года, на который приходится результирующая дата.",
+    "Syntax": "ENDOFYEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время",
+    "Result": "Дата и время",
+    "Example": "ENDOFYEARUTC ( DATE ( '2025-01-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "EQ",
+    "Description": "Сравнивает два аргумента типа «Дата и время» или « Длительность» и возвращает значение True, если они равны, в противном случае возвращает False.",
+    "Syntax": "EQ ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время. argument1 , argument2: длительность.",
+    "Result": "Логическое значение",
+    "Example": "EQ ( DURATION ( 'P2DT1H30M30S' ), DURATION ( 'P1DT25H30M30S' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "EQUTC",
+    "Description": "Принимает два аргумента типа «Дата и время», преобразует их в часовой пояс UTC+00:00. Сравнивает результирующие значения и возвращает значение True, если они равны, в противном случае возвращает False.",
+    "Syntax": "EQUTC ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "EQUTC ( DATE ( '2025-01-01T01:01:01+03:00' ), DATE ( '2025-01-01T00:01:01+02:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "FORMATDUR",
+    "Description": "Преобразует значение типа « Длительность» в строку формата ISO 8601.",
+    "Syntax": "FORMATDUR ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Строка",
+    "Example": "FORMATDUR ( INSECONDS ( 5000000 ))",
+    "ExampleResult": "P57DT20H53M20S, где:"
+  },
+  {
+    "Name": "FORMATLOC",
+    "Description": "Преобразует значение типа «Дата и время» в строку формата ISO 8601. См. также « Форматирование значений в шаблонах экспорта и формулах» .",
+    "Syntax": "FORMATLOC ( dateTime , formatString )",
+    "Arguments": "dateTime: дата и время. formatString : строка, задающая формат ISO 8601.",
+    "Result": "Строка",
+    "Example": "FORMATLOC ( DATE ( '2025-05-05T05:05:25' ), \"dd MMMM yyyy г. hh:mm:ss\" )",
+    "ExampleResult": "05 мая 2025 г. 05:05:25"
+  },
+  {
+    "Name": "FORMATUTC",
+    "Description": "Преобразует значение типа «Дата и время» в строку формата ISO 8601 в часовом поясе UTC+00:00. См. также « Форматирование значений в шаблонах экспорта и формулах» .",
+    "Syntax": "FORMATUTC ( dateTime , formatString )",
+    "Arguments": "dateTime: дата и время. formatString : строка.",
+    "Result": "Строка",
+    "Example": "FORMATUTC ( DATE ( '2025-05-05T05:05:25+03:00' ), \"dd MMMM yyyy года hh:mm:ss\" )",
+    "ExampleResult": "05 мая 2025 г. 02:05:25"
+  },
+  {
+    "Name": "GE",
+    "Description": "Сравнивает два аргумента типа «Дата и время» или « Длительность». Возвращает логическое значение True, если первый аргумент больше или равен второму, в противном случае возвращает False.",
+    "Syntax": "GE ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время. argument1 , argument2: длительность.",
+    "Result": "Логическое значение",
+    "Example": "GE ( DURATION ( 'P1DT1H30M30S' ), DURATION ( 'P2DT1H30M30S' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "GETSPAN",
+    "Description": "Вычисляет длительность между значениями двух аргументов типа «Дата и время».",
+    "Syntax": "GETSPAN ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Длительность",
+    "Example": "GETSPAN ( DATE ( '2025-05-05T05:05:25' ), DATE ( '2025-05-05T10:10:50' ))",
+    "ExampleResult": "-05:05:25"
+  },
+  {
+    "Name": "GETSPANUTC",
+    "Description": "Принимает два аргумента типа «Дата и время», переводит их значения в часовой пояс UTC+00:00 и вычисляет длительность между результирующими значениями.",
+    "Syntax": "GETSPANUTC ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Длительность",
+    "Example": "GETSPANUTC ( DATE ( '2025-05-05T05:05:25+00:00' ), DATE ( '2025-05-05T05:05:25+05:00' ))",
+    "ExampleResult": "05:00:00"
+  },
+  {
+    "Name": "GEUTC",
+    "Description": "Принимает два аргумента типа «Дата и время», переводит их значения в часовой пояс UTC+00:00. Сравнивает результирующие значения и возвращает логическое значение True, если первое значение больше или равно второму, в противном случае возвращает False.",
+    "Syntax": "GEUTC ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "GEUTC ( DATE ( '2025-05-05T05:05:25+00:00' ), DATE ( '2025-05-05T05:05:25+05:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "GT",
+    "Description": "Принимает два аргумента типа «Дата и время» или « Длительность». Возвращает логическое значение True, если первый аргумент больше второго, в противном случае возвращает False.",
+    "Syntax": "GT ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: длительность argument1 , argument2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "GT ( DATE ( '2025-05-05T05:05:25' ), DATE ( '2025-05-05T05:05:25' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "GTUTC",
+    "Description": "Принимает два аргумента типа «Дата и время» и переводит их значения в часовой пояс UTC+00:00. Возвращает логическое значение True, если первое значение больше второго, в противном случае возвращает False.",
+    "Syntax": "GTUTC ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "GTUTC ( DATE ( '2025-05-05T05:05:25+00:00' ), DATE ( '2025-05-05T05:05:25+05:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "HOUR",
+    "Description": "Принимает значение типа «Дата и время» и строку с часовым поясом в формате IANA. Возвращает час результирующего времени с учётом часового пояса.",
+    "Syntax": "HOUR ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "HOUR ( DATE ( '2025-05-05T05:05:25+00:00' ), \"Europe/Moscow\" )",
+    "ExampleResult": "8"
+  },
+  {
+    "Name": "HOURS",
+    "Description": "Преобразует аргумент типа « Длительность» в количество часов в десятичном формате.",
+    "Syntax": "HOURS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "HOURS ( DURATION ( 'P2DT1H30M0S' ))",
+    "ExampleResult": "49,5"
+  },
+  {
+    "Name": "HOURUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает число, соответствующее часу результирующего времени.",
+    "Syntax": "HOURUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "HOURUTC ( DATE ( '2025-05-05T05:05:25+03:00' ))",
+    "ExampleResult": "2"
+  },
+  {
+    "Name": "INSECONDS",
+    "Description": "Преобразует аргумент типа «Дата и время» или « Длительность» в количество секунд. Преобразует количество секунд в аргументе типа « Число» в значение типа « Длительность».",
+    "Syntax": "INSECONDS ( argument )",
+    "Arguments": "argument : дата и время, длительность или число.",
+    "Result": "Количество секунд для аргумента типа « Дата и время» или « Длительность». Длительность для аргумента типа « Число».",
+    "Example": "INSECONDS ( 5 )",
+    "ExampleResult": "00:00:05"
+  },
+  {
+    "Name": "INSECONDSUTC",
+    "Description": "Переводит аргумент типа «Дата и время» в часовой пояс UTC+00:00 и возвращает количество секунд в результирующем значении. Преобразует аргумент типа « Длительность» в количество секунд. Преобразует количество секунд в аргументе типа « Число» в значение типа « Длительность».",
+    "Syntax": "INSECONDSUTC ( argument )",
+    "Arguments": "argument : дата и время, длительность или число.",
+    "Result": "Количество секунд для аргумента типа « Дата и время» или « Длительность». Длительность для аргумента типа « Число».",
+    "Example": "INSECONDSUTC ( DATE ( '2025-05-05T05:05:25' ))",
+    "ExampleResult": "63882018325"
+  },
+  {
+    "Name": "ISLEAPYEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает логическое значение True, если год указанной даты является високосным, в противном случае возвращает False.",
+    "Syntax": "ISLEAPYEAR ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISLEAPYEAR ( DATE ( '2025-01-01T01:01:01' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "ISLEAPYEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает логическое значение True, если год результирующей даты является високосным, в противном случае возвращает False.",
+    "Syntax": "ISLEAPYEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISLEAPYEARUTC ( DATE ( '2025-01-01T01:01:01+03:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ISOFORMAT",
+    "Description": "Преобразует значение типа «Дата и время» в строку формата ISO 8601.",
+    "Syntax": "ISOFORMAT ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Строка",
+    "Example": "ISOFORMAT ( NOW ())",
+    "ExampleResult": "2025-05-28T09:07:52.362149+03:00"
+  },
+  {
+    "Name": "ISOFORMATUTC",
+    "Description": "Принимает значение типа «Дата и время», переводит его в часовой пояс UTC+00:00 и преобразует в строку формата ISO 8601.",
+    "Syntax": "ISOFORMATUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Строка",
+    "Example": "ISOFORMATUTC ( NOW ())",
+    "ExampleResult": "2025-05-28T06:10:39.357235Z."
+  },
+  {
+    "Name": "ISTODAY",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает логическое значение True, если значение аргумента приходится на текущую дату, в противном случае возвращает False.",
+    "Syntax": "ISTODAY ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISTODAY ( NOW ())",
+    "ExampleResult": "True, так как NOW() возвращает текущую дату."
+  },
+  {
+    "Name": "ISTODAYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00и возвращает логическое значение True, если результирующее значение приходится на текущую дату, в противном случае возвращает False.",
+    "Syntax": "ISTODAYUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISTODAYUTC ( NOW ())",
+    "ExampleResult": "True, если дата в часовом поясе UTC+00:00 совпадает с текущей датой."
+  },
+  {
+    "Name": "ISWEEKEND",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает логическое значение True, если значение аргумента приходится на выходной день, в противном случае возвращает результат False.",
+    "Syntax": "ISWEEKEND ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISWEEKEND ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "ISWEEKENDUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает логическое значение True, если результирующее значение приходится на выходной день, в противном случае возвращает результат False.",
+    "Syntax": "ISWEEKENDUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISWEEKENDUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ISWORKDAY",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает логическое значение True, если значение аргумента приходится на рабочий день, в противном случае возвращает результат False.",
+    "Syntax": "ISWORKDAY ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISWORKDAY ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "ISWORKDAYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает логическое значение True, если результирующее значение приходится на рабочий день, в противном случае возвращает результат False.",
+    "Syntax": "ISWORKDAYUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Логическое значение",
+    "Example": "ISWORKDAYUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "LE",
+    "Description": "Сравнивает два аргумента типа «Дата и время» или « Длительность». Если первый аргумент меньше или равен второму, возвращает логическое значение True, в противном случае возвращает False.",
+    "Syntax": "LE ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время. argument1 , argument2: длительность.",
+    "Result": "Логическое значение",
+    "Example": "LE ( DURATION ( 'P2DT1H0M0S' ), DURATION ( 'P3DT1H0M0S' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "LT",
+    "Description": "Сравнивает два аргумента типа «Дата и время» или « Длительность» и возвращает логическое значение True, если первый аргумент меньше второго, в противном случае возвращает False.",
+    "Syntax": "LT ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время. argument1 , argument2: длительность.",
+    "Result": "Логическое значение",
+    "Example": "LT ( DURATION ( 'P2DT1H0M0S' ), DURATION ( 'P3DT1H0M0S' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "LTUTC",
+    "Description": "Принимает два аргумента типа «Дата и время», переводит их значения в часовой пояс UTC+00:00 и возвращает логическое значение True, если первое значение меньше второго, в противном случае возвращает False.",
+    "Syntax": "LTUTC ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "LTUTC ( DATE ( '2025-05-05T01:01:01+03:00' ), DATE ( '2025-05-05T01:01:01+04:00' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "MINUTE",
+    "Description": "Принимает аргумент типа «Дата и время» и строку с часовым поясом в формате IANA. Приводит аргумент к заданному часовому поясу и возвращает минуты результирующего времени.",
+    "Syntax": "MINUTE ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "MINUTE ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "1"
+  },
+  {
+    "Name": "MINUTES",
+    "Description": "Преобразует аргумент типа « Длительность» в количество минут в десятичном формате.",
+    "Syntax": "MINUTES ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "MINUTES ( DURATION ( 'P1DT1H30M30S' ))",
+    "ExampleResult": "1530,5"
+  },
+  {
+    "Name": "MINUTEUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его значение в часовой пояс UTC+00:00 и возвращает число, соответствующее минутам результирующего времени.",
+    "Syntax": "MINUTEUTC ( dateTime )",
+    "Arguments": "dateTime: дата и время.",
+    "Result": "Число",
+    "Example": "MINUTEUTC ( DATE ( '2025-05-05T01:01:01+03:30' ))",
+    "ExampleResult": "31"
+  },
+  {
+    "Name": "MONTH",
+    "Description": "Принимает аргумент типа «Дата и время» и строку с часовым поясом в формате IANA. Приводит аргумент к заданному часовому поясу и возвращает месяц результирующей даты.",
+    "Syntax": "MONTH ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "MONTH ( DATE ( '2025-05-01T01:01:01+03:00' ), \"Europe/London\" )",
+    "ExampleResult": "4"
+  },
+  {
+    "Name": "MONTHS",
+    "Description": "Преобразует аргумент типа « Длительность» в количество месяцев в десятичном формате.",
+    "Syntax": "MONTHS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "MONTHS ( DURATION ( 'P45D' ))",
+    "ExampleResult": "1,5"
+  },
+  {
+    "Name": "MONTHUTC",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает число, соответствующее месяцу указанной даты для часового пояса UTC+00:00.",
+    "Syntax": "MONTHUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "MONTHUTC ( DATE ( '2025-05-01T01:01:01+03:00' ))",
+    "ExampleResult": "4"
+  },
+  {
+    "Name": "NE",
+    "Description": "Сравнивает два аргумента типа «Дата и время» или « Длительность» и возвращает логическое значение True, если они не равны, в противном случае возврашает False.",
+    "Syntax": "NE ( argument1 , argument2 )",
+    "Arguments": "argument1 , argument2: дата и время. argument1 , argument2: длительность.",
+    "Result": "Логическое значение",
+    "Example": "NE ( DURATION ( 'P0DT25H30M0S' ), DURATION ( 'P1DT1H30M0S' ))",
+    "ExampleResult": "False"
+  },
+  {
+    "Name": "NEUTC",
+    "Description": "Принимает два аргумента типа «Дата и время», переводит их значения в часовой пояс UTC+00:00 и возвращает логическое значение True, если результирующие значения не равны, в противном случае возврашает False.",
+    "Syntax": "NEUTC ( dateTime1 , dateTime2 )",
+    "Arguments": "dateTime1 , dateTime2: дата и время.",
+    "Result": "Логическое значение",
+    "Example": "NEUTC ( DATE ( '2025-05-01T01:01:01+03:00' ), DATE ( '2025-05-01T01:01:01+02:00' ))",
+    "ExampleResult": "True"
+  },
+  {
+    "Name": "NOW",
+    "Description": "Возвращает текущие дату и время.",
+    "Syntax": "NOW ()",
+    "Arguments": "Не требуются.",
+    "Result": "Дата и время",
+    "Example": "NOW ()",
+    "ExampleResult": "28.05.2025 12:01:53"
+  },
+  {
+    "Name": "PARSEDATE",
+    "Description": "Преобразует строку в значение типа «Дата и время» согласно заданной маске в формате ISO 8601.",
+    "Syntax": "PARSEDATE ( string , stringFormat )",
+    "Arguments": "string: строка. stringFormat : строка, задающая формат даты по стандарту ISO 8601.",
+    "Result": "Дата и время",
+    "Example": "PARSEDATE ( \"050525\" , \"MMddyy\" )",
+    "ExampleResult": "05.05.2025 0:00:00"
+  },
+  {
+    "Name": "PARSEDATEUTC",
+    "Description": "Преобразует строку в значение типа «Дата и время» в часовом поясе UTC+00:00 согласно заданной маске в формате ISO 8601.",
+    "Syntax": "PARSEDATEUTC ( string , stringFormat )",
+    "Arguments": "string: строка. stringFormat : строка, задающая формат даты по стандарту ISO 8601.",
+    "Result": "Дата и время",
+    "Example": "PARSEDATEUTC ( \"0505250001\" , \"MMddyyhhmm\" )",
+    "ExampleResult": "05.05.2025 0:01:00"
+  },
+  {
+    "Name": "QUARTERS",
+    "Description": "Преобразует аргумент типа « Длительность» в количество кварталов в десятичном формате.",
+    "Syntax": "QUARTERS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "QUARTERS ( DURATION ( 'P229D' ))",
+    "ExampleResult": "2,5"
+  },
+  {
+    "Name": "SECOND",
+    "Description": "Принимает аргумент типа «Дата и время» и строку с часовым поясом в формате IANA. Приводит аргумент к заданному часовому поясу и возвращает секунды результирующего времени.",
+    "Syntax": "SECOND ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "SECOND ( DATE ( '2025-05-05T01:01:01' ), \"Europe/London\" )",
+    "ExampleResult": "1"
+  },
+  {
+    "Name": "SECONDS",
+    "Description": "Преобразует аргумент типа « Длительность» в количество секунд.",
+    "Syntax": "SECONDS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "SECONDS ( DURATION ( 'P1DT1H30M0S' ))",
+    "ExampleResult": "91800"
+  },
+  {
+    "Name": "SECONDUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает число, соответствующее секундам резуьтирующего времени.",
+    "Syntax": "SECONDUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "SECONDUTC ( DATE ( '2025-05-05T01:01:01+01:00' ))",
+    "ExampleResult": "1"
+  },
+  {
+    "Name": "STARTOFDAY",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время начала соответствующего дня.",
+    "Syntax": "STARTOFDAY ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFDAY ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "05.05.2025 0:00:00"
+  },
+  {
+    "Name": "STARTOFDAYUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время начала результирующего дня.",
+    "Syntax": "STARTOFDAYUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFDAYUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "STARTOFMONTH",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время начала соответствующего месяца.",
+    "Syntax": "STARTOFMONTH ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFMONTH ( DATE ( '2025-05-01T01:01:01' ))",
+    "ExampleResult": "01.05.2025 0:00:00"
+  },
+  {
+    "Name": "STARTOFMONTHUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время начала месяца, на который приходится результирующая дата.",
+    "Syntax": "STARTOFMONTHUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFMONTHUTC ( DATE ( '2025-05-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "STARTOFQUARTER",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время начала соответствующего квартала.",
+    "Syntax": "STARTOFQUARTER ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFQUARTER ( DATE ( '2025-04-01T01:01:01' ))",
+    "ExampleResult": "01.04.2025 0:00:00"
+  },
+  {
+    "Name": "STARTOFQUARTERUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время начала квартала, на который приходится результирующая дата.",
+    "Syntax": "STARTOFQUARTERUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFQUARTERUTC ( DATE ( '2025-04-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "STARTOFWEEK",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время начала соответствующей недели.",
+    "Syntax": "STARTOFWEEK ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFWEEK ( DATE ( '2025-05-05T01:01:01' ))",
+    "ExampleResult": "05.05.2025 0:00:00"
+  },
+  {
+    "Name": "STARTOFWEEKUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время начала недели, на которую приходится результирующая дата.",
+    "Syntax": "STARTOFWEEKUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFWEEKUTC ( DATE ( '2025-05-05T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "STARTOFYEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает дату и время начала соответствующего года.",
+    "Syntax": "STARTOFYEAR ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFYEAR ( DATE ( '2025-01-01T01:01:01' ))",
+    "ExampleResult": "01.01.2025 0:00:00"
+  },
+  {
+    "Name": "STARTOFYEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает дату и время начала года, на который приходится результирующая дата.",
+    "Syntax": "STARTOFYEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Дата и время",
+    "Example": "STARTOFYEARUTC ( DATE ( '2025-01-01T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "SUB",
+    "Description": "Вычитает из значения аргумента типа «Дата и время» или « Длительность» значение типа « Длительность».",
+    "Syntax": "SUB ( dateTime , duration )",
+    "Arguments": "dateTime: дата и время. duration: длительность.",
+    "Result": "Дата и время",
+    "Example": "SUB ( DATE ( '2025-01-01T01:01:01' ), DURATION ( 'P1DT1H30M0S' ))",
+    "ExampleResult": "30.12.2024 23:31:01"
+  },
+  {
+    "Name": "SUBUTC",
+    "Description": "Вычитает из значения типа «Дата и время» значение типа « Длительность». Возвращает значение типа «Дата и время» для часового пояса UTC+00:00.",
+    "Syntax": "SUBUTC ( dateTime , duration )",
+    "Arguments": "dateTime: дата и время. duration: длительность.",
+    "Result": "Дата и время",
+    "Example": "SUBUTC ( DATE ( '2025-01-01T01:01:01+00:00' ), DURATION ( 'P1DT1H30M0S' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "TODURATION",
+    "Description": "Преобразует количество секунд в значение типа « Длительность».",
+    "Syntax": "TODURATION ( number )",
+    "Arguments": "number: число.",
+    "Result": "Длительность",
+    "Example": "TODURATION ( 12345 )",
+    "ExampleResult": "03:25:45"
+  },
+  {
+    "Name": "WEEKOFYEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и возвращает номер недели соответствующего года.",
+    "Syntax": "WEEKOFYEAR ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "WEEKOFYEAR ( DATE ( '2025-05-06T01:01:01' ))",
+    "ExampleResult": "18"
+  },
+  {
+    "Name": "WEEKOFYEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает номер недели года, на которую приходится результирующая дата.",
+    "Syntax": "WEEKOFYEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "WEEKOFYEARUTC ( DATE ( '2025-05-06T01:01:01+03:00' ))",
+    "ExampleResult": null
+  },
+  {
+    "Name": "WORKDAYS",
+    "Description": "Принимает три аргумента: дату, количество рабочих дней и список исключаемых дат. Прибавляет к исходной дате количество рабочих дней с учётом выходных дней и списка исключений и возвращает результирующую дату. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим. Если рабочий часовой пояс отличается от часового пояса сервера Comindware Platform, используйте функцию WORKDAYSTZ().",
+    "Syntax": "WORKDAYS ( startDateTime , workingDays , LIST ( excludedDate1 , … , excludedDateN ) )",
+    "Arguments": "startDateTime : дата и время. workingDays : количество рабочих дней. LIST(excludedDate1, …, excludedDateN) (необязательный аргумент): список исключаемых дат.",
+    "Result": "Дата и время",
+    "Example": "WORKDAYS ( DATE ( '2025-05-01' ), 10 , LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ) )",
+    "ExampleResult": "21.05.2025 0:00:00"
+  },
+  {
+    "Name": "WORKDAYSDURATION",
+    "Description": "Принимает три аргумента: начальные дату и время, конечные дату и время и список исключаемых дат. Возвращает длительность между начальной и конечной датой с учётом выходных дней и списка исключений. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим. Если рабочий часовой пояс отличается от часового пояса сервера Comindware Platform, используйте функцию WORKDAYSDURATIONTZ().",
+    "Syntax": "WORKDAYSDURATION ( startDateTime , endDateTime , LIST ( excludedDate1 , … , excludedDateN ) )",
+    "Arguments": "startDateTime : дата и время. endDateTime : дата и время. LIST(excludedDate1, …, excludedDateN) : (необязательный аргумент): список исключаемых дат.",
+    "Result": "Длительность",
+    "Example": "WORKDAYSDURATION ( DATE ( '2025-05-01' ), DATE ( '2025-05-12' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ) )",
+    "ExampleResult": "3.00:00:00"
+  },
+  {
+    "Name": "WORKDAYSDURATIONTZ",
+    "Description": "Принимает три аргумента: начальные дату и время, конечные дату и время, список исключаемых дат и часовой пояс. Возвращает длительность между начальной и конечной датой с учётом выходных дней, списка исключений и часового пояса. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим.",
+    "Syntax": "WORKDAYSDURATIONTZ ( startDateTime , endDateTime , LIST ( excludedDate1 , … , excludedDateN ), timeZone )",
+    "Arguments": "startDateTime : дата и время. endDateTime : дата и время. LIST(excludedDate1, …, excludedDateN) : (необязательный аргумент): список исключаемых дат. timeZone: строка, задающая часовой пояс в формате IANA.",
+    "Result": "Длительность",
+    "Example": "WORKDAYSDURATIONTZ ( DATE ( '2025-05-01' ), DATE ( '2025-05-12' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ), \"Asia/Tokyo\" )",
+    "ExampleResult": "3.06:00:00"
+  },
+  {
+    "Name": "WORKDAYSDURATIONUTC",
+    "Description": "Принимает два аргумента: начальные и конечные дату и время. Переводит даты и время в часовой пояс UTC+00:00 и возвращает длительность между ними за вычетом выходных дней.",
+    "Syntax": "WORKDAYSDURATIONUTC ( startDateTime , endDateTime )",
+    "Arguments": "startDateTime , endDateTime: дата и время.",
+    "Result": "Длительность",
+    "Example": "WORKDAYSDURATIONUTC ( DATE ( '2025-05-01+03:00' ), DATE ( '2025-05-12+00:00' ) )",
+    "ExampleResult": "9"
+  },
+  {
+    "Name": "WORKDAYSTZ",
+    "Description": "Принимает три аргумента: дату, количество рабочих дней, список исключаемых дат и часовой пояс. Прибавляет к исходной дате количество рабочих дней с учётом выходных дней, списка исключений и часового пояса и возвращает результирующую дату. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим.",
+    "Syntax": "WORKDAYSTZ ( startDay , workingDays , LIST ( excludedDate1 , … , excludedDateN ), timeZone )",
+    "Arguments": "startDateTime : дата и время. workingDays : число, количество рабочих дней. LIST(excludedDate1, …, excludedDateN) : (необязательный аргумент): список исключаемых дат. timeZone: строка, задающая часовой пояс в формате IANA.",
+    "Result": "Дата и время",
+    "Example": "WORKDAYSTZ ( DATE ( '2025-05-01+03:00' ), 10 , LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ), \"America/Anchorage\" )",
+    "ExampleResult": "20.05.2025 0:00:00"
+  },
+  {
+    "Name": "WORKDAYSUTC",
+    "Description": "Принимает два аргумента: дату и количество рабочих дней. Приводит дату к часовому поясу UTC+00:00, прибавляет количество рабочих дней за вычетом выходных дней и возвращает результирующую дату.",
+    "Syntax": "WORKDAYSUTC ( startDay , workingDays )",
+    "Arguments": "startDateTime : дата и время. workingDays : число, количество рабочих дней.",
+    "Result": "Дата и время",
+    "Example": "WORKDAYSUTC ( DATE ( '2025-05-01+03:00' ), 3 )",
+    "ExampleResult": "06.05.2025 0:00:00"
+  },
+  {
+    "Name": "WORKHOURS",
+    "Description": "Принимает пять аргументов: дату начала работы, количество рабочих часов, отведённых на работу, время начала рабочего дня, продолжительность рабочего дня и список исключаемых дат. Прибавляет к начальной дате количество рабочих часов с учётом времени начала и продолжительности рабочего дня, выходных дней и списка исключений и возвращает дату и время завершения работы. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим. Если рабочий часовой пояс отличается от часового пояса сервера Comindware Platform, используйте функцию WORKHOURSTZ() .",
+    "Syntax": "WORKHOURS ( startDateTime , workingHours , workingDayStart , workingDayDuration , LIST ( excludedDate1 , ..., excludedDateN ) )",
+    "Arguments": "startDateTime : дата и время. workingHours : число, количество рабочих часов. workingDayStart : длительность, время начала рабочего дня от 00:00. workingDayDuration : длительность рабочего дня (должна быть меньше разницы между полуночью и временем начала рабочего дня). LIST(excludedDate1, ..., excludedDateN) : (необязательный аргумент): список исключаемых дат.",
+    "Result": "Дата и время",
+    "Example": "WORKHOURS ( DATE ( '2025-05-01' ), 5 , DURATION ( 'PT9H' ), DURATION ( 'PT4H' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ) )",
+    "ExampleResult": "06.05.2025 10:00:00"
+  },
+  {
+    "Name": "WORKHOURSDURATION",
+    "Description": "Принимает пять аргументов: начальные дату и время, конечные дату и время, время начала рабочего дня, продолжительность рабочего дня и список исключаемых дат. Возвращает длительность рабочего времени между начальной и конечной датами с учётом времени начала и продолжительности рабочего дня, выходных дней и списка исключений. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим. Если рабочий часовой пояс отличается от часового пояса сервера Comindware, используйте функцию WORKHOURSDURATIONTZ() .",
+    "Syntax": "WORKHOURSDURATION ( startDateTime , endDateTime , workingDayStart , workingDayDuration , LIST ( excludedDate1 , ..., excludedDateN ) )",
+    "Arguments": "startDateTime : дата и время. endDateTime : дата и время. workingDayStart : длительность, время начала рабочего дня от 00:00. workingDayEnd : длительность рабочего дня (должна быть меньше разницы между полуночью и временем начала рабочего дня). LIST(excludedDate1, ..., excludedDateN) (необязательный аргумент): список исключаемых дат.",
+    "Result": "Длительность",
+    "Example": "WORKHOURSDURATION ( DATE ( '2025-05-01' ), DATE ( '2025-05-07' ), DURATION ( 'PT8H' ), DURATION ( 'PT15H' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ) )",
+    "ExampleResult": "22:00:00"
+  },
+  {
+    "Name": "WORKHOURSDURATIONTZ",
+    "Description": "Принимает шесть аргументов: начальные дату и время, конечные дату и время, время начала рабочего дня, продолжительность рабочего дня, список исключаемых дат и часовой пояс. Возвращает длительность рабочего времени между начальной и конечной датами с учётом времени начала и продолжительности рабочего дня, выходных дней, списка исключений и часового пояса. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим.",
+    "Syntax": "WORKHOURSDURATIONTZ ( startDateTime , endDateTime , workingDayStart , workingDayDuration , LIST ( holiday1 , ..., holidayN ), timeZone )",
+    "Arguments": "startDateTime : дата и время. endDateTime : дата и время. workingDayStart : длительность, время начала рабочего дня. workingDayDuration : длительность рабочего дня (должна быть меньше разницы между полуночью и временем начала рабочего дня). LIST(holiday1, ..., holidayN) (необязательный аргумент): список исключаемых дат. timeZone: строка, задающая часовой пояс в формате IANA.",
+    "Result": "Длительность",
+    "Example": "WORKHOURSDURATIONTZ ( DATE ( '2025-05-01' ), DATE ( '2025-05-07' ), DURATION ( 'PT8H' ), DURATION ( 'PT15H' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ), \"Asia/Tokyo\" )",
+    "ExampleResult": "1.04:00:00"
+  },
+  {
+    "Name": "WORKHOURSTZ",
+    "Description": "Принимает пять аргументов: дату начала работы, количество часов, отведённых на работу, время начала рабочего дня, продолжительность рабочего дня, список исключаемых дат и часовой пояс. Прибавляет к начальной дате количество рабочих часов с учётом времени начала и продолжительности рабочего дня, выходных дней, списка исключений и часового пояса и возвращает дату и время завершения работы. Если в списке исключений указан рабочий день, он считается выходным, а если если указан выходной день, он считается рабочим.",
+    "Syntax": "WORKHOURSTZ ( startDateTime , workingHours , workingDayStart , workingDayDuration , LIST ( excludedDate1 , ..., excludedDateN ), timeZone )",
+    "Arguments": "startDateTime : дата и время. workingHours : число, количество рабочих часов. workingDayStart : длительность, время начала рабочего дня от 00:00. workingDayDuration : длительность рабочего дня (должна быть меньше разницы между полуночью и временем начала рабочего дня), LIST(excludedDate1, ..., excludedDateN) (необязательный аргумент): список исключаемых дат. timeZone: строка, задающая часовой пояс в формате IANA.",
+    "Result": "Дата и время",
+    "Example": "WORKHOURSTZ ( DATE ( '2025-05-01' ), 5 , DURATION ( 'PT9H' ), DURATION ( 'PT4H' ), LIST ( DATE ( '2025-05-01' ), DATE ( '2025-05-02' ), DATE ( '2025-05-08' ), DATE ( '2025-05-09' ) ), \"America/Anchorage\" )",
+    "ExampleResult": "05.05.2025 10:00:00"
+  },
+  {
+    "Name": "YEAR",
+    "Description": "Принимает аргумент типа «Дата и время» и строку с часовым поясом в формате IANA. Приводит аргумент к заданному часовому поясу и возвращает год результирующей даты.",
+    "Syntax": "YEAR ( dateTime , timeZone )",
+    "Arguments": "dateTime: дата и время. timeZone: строка, задающая часовой пояс в формате IANA (необязательный аргумент).",
+    "Result": "Число",
+    "Example": "YEAR ( DATE ( '2025-01-01' ), \"America/Anchorage\" )",
+    "ExampleResult": "2024"
+  },
+  {
+    "Name": "YEARS",
+    "Description": "Преобразует аргумента типа « Длительность» в количество лет.",
+    "Syntax": "YEARS ( duration )",
+    "Arguments": "duration : длительность.",
+    "Result": "Число",
+    "Example": "YEARS ( DURATION ( 'P183D' ))",
+    "ExampleResult": "0,5"
+  },
+  {
+    "Name": "YEARUTC",
+    "Description": "Принимает аргумент типа «Дата и время», переводит его в часовой пояс UTC+00:00 и возвращает год результирующей даты.",
+    "Syntax": "YEARUTC ( dateTime )",
+    "Arguments": "dateTime : дата и время.",
+    "Result": "Число",
+    "Example": "YEARUTC ( DATE ( '2025-01-01+03:00' ))",
+    "ExampleResult": "2024"
+  }
+]

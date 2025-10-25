@@ -9,7 +9,7 @@ using Microsoft.SemanticKernel.Connectors.MistralAI.Client;
 namespace Microsoft.SemanticKernel.Connectors.MistralAI;
 
 /// <summary>Represents a behavior for Mistral tool calls.</summary>
-public abstract class MistralAIToolCallBehavior
+public abstract class GigaChatAIToolCallBehavior
 {
     // NOTE: Right now, the only tools that are available are for function calling. In the future,
     // this class can be extended to support additional kinds of tools, including composite ones:
@@ -43,7 +43,7 @@ public abstract class MistralAIToolCallBehavior
     /// <remarks>
     /// If no <see cref="Kernel"/> is available, no function information will be provided to the model.
     /// </remarks>
-    public static MistralAIToolCallBehavior EnableKernelFunctions { get; } = new KernelFunctions(autoInvoke: false);
+    public static GigaChatAIToolCallBehavior EnableKernelFunctions { get; } = new KernelFunctions(autoInvoke: false);
 
     /// <summary>
     /// Gets an instance that will both provide all of the <see cref="Kernel"/>'s plugins' function information
@@ -54,17 +54,17 @@ public abstract class MistralAIToolCallBehavior
     /// handling invoking any requested functions and supplying the results back to the model.
     /// If no <see cref="Kernel"/> is available, no function information will be provided to the model.
     /// </remarks>
-    public static MistralAIToolCallBehavior AutoInvokeKernelFunctions { get; } = new KernelFunctions(autoInvoke: true);
+    public static GigaChatAIToolCallBehavior AutoInvokeKernelFunctions { get; } = new KernelFunctions(autoInvoke: true);
 
     /// <summary>Gets an instance that will provide the specified list of functions to the model.</summary>
     /// <param name="functions">The functions that should be made available to the model.</param>
     /// <param name="autoInvoke">true to attempt to automatically handle function call requests; otherwise, false.</param>
     /// <returns>
-    /// The <see cref="MistralAIToolCallBehavior"/> that may be set into <see cref="GigaChatAIPromptExecutionSettings.ToolCallBehavior"/>
+    /// The <see cref="GigaChatAIToolCallBehavior"/> that may be set into <see cref="GigaChatAIPromptExecutionSettings.ToolCallBehavior"/>
     /// to indicate that the specified functions should be made available to the model.
     /// The model is forced to call a function from the list of functions provided.
     /// </returns>
-    public static MistralAIToolCallBehavior RequiredFunctions(IEnumerable<KernelFunction> functions, bool autoInvoke = false)
+    public static GigaChatAIToolCallBehavior RequiredFunctions(IEnumerable<KernelFunction> functions, bool autoInvoke = false)
     {
         Verify.NotNull(functions);
         return new AnyFunction(functions, autoInvoke);
@@ -79,10 +79,10 @@ public abstract class MistralAIToolCallBehavior
     /// handling invoking any requested functions and supplying the results back to the model.
     /// If no <see cref="Kernel"/> is available, no function information will be provided to the model.
     /// </remarks>
-    public static MistralAIToolCallBehavior NoKernelFunctions { get; } = new NoneKernelFunctions();
+    public static GigaChatAIToolCallBehavior NoKernelFunctions { get; } = new NoneKernelFunctions();
 
     /// <summary>Initializes the instance; prevents external instantiation.</summary>
-    private MistralAIToolCallBehavior(bool autoInvoke)
+    private GigaChatAIToolCallBehavior(bool autoInvoke)
     {
         this.MaximumAutoInvokeAttempts = autoInvoke ? DefaultMaximumAutoInvokeAttempts : 0;
     }
@@ -113,16 +113,16 @@ public abstract class MistralAIToolCallBehavior
     /// <value>true if it's ok to invoke any kernel function requested by the model if it's found; false if a request needs to be validated against an allow list.</value>
     internal virtual bool AllowAnyRequestedKernelFunction => false;
 
-    /// <summary>Configures the <paramref name="request"/> with any tools this <see cref="MistralAIToolCallBehavior"/> provides.</summary>
+    /// <summary>Configures the <paramref name="request"/> with any tools this <see cref="GigaChatAIToolCallBehavior"/> provides.</summary>
     /// <param name="kernel">The <see cref="Kernel"/> used for the operation. This can be queried to determine what tools to provide into the <paramref name="request"/>.</param>
     /// <param name="request">The destination <see cref="ChatCompletionRequest"/> to configure.</param>
     internal abstract void ConfigureRequest(Kernel? kernel, ChatCompletionRequest request);
 
     /// <summary>
-    /// Represents a <see cref="MistralAIToolCallBehavior"/> that will provide to the model all available functions from a
+    /// Represents a <see cref="GigaChatAIToolCallBehavior"/> that will provide to the model all available functions from a
     /// <see cref="Kernel"/> provided by the client.
     /// </summary>
-    internal sealed class KernelFunctions : MistralAIToolCallBehavior
+    internal sealed class KernelFunctions : GigaChatAIToolCallBehavior
     {
         internal KernelFunctions(bool autoInvoke) : base(autoInvoke) { }
 
@@ -165,9 +165,9 @@ public abstract class MistralAIToolCallBehavior
     }
 
     /// <summary>
-    /// Represents a <see cref="MistralAIToolCallBehavior"/> that provides a specified list of functions to the model.
+    /// Represents a <see cref="GigaChatAIToolCallBehavior"/> that provides a specified list of functions to the model.
     /// </summary>
-    internal sealed class AnyFunction(IEnumerable<KernelFunction> functions, bool autoInvoke) : MistralAIToolCallBehavior(autoInvoke)
+    internal sealed class AnyFunction(IEnumerable<KernelFunction> functions, bool autoInvoke) : GigaChatAIToolCallBehavior(autoInvoke)
     {
         private readonly IEnumerable<KernelFunctionMetadata>? _kernelFunctionMetadata = functions.Select(f => f.Metadata);
 
@@ -223,11 +223,11 @@ public abstract class MistralAIToolCallBehavior
     }
 
     /// <summary>
-    /// Represents a <see cref="MistralAIToolCallBehavior"/> that will provide to the model all available functions from a
+    /// Represents a <see cref="GigaChatAIToolCallBehavior"/> that will provide to the model all available functions from a
     /// <see cref="Kernel"/> provided by the client and specifies the cool choice "none".
     /// When tool choice is set to none the model won't call a function and will generate a message instead.
     /// </summary>
-    internal sealed class NoneKernelFunctions : MistralAIToolCallBehavior
+    internal sealed class NoneKernelFunctions : GigaChatAIToolCallBehavior
     {
         internal NoneKernelFunctions() : base(false) { }
 

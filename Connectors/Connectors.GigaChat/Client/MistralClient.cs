@@ -707,7 +707,7 @@ internal sealed class GigaChatClient
         return request;
     }
 
-    internal List<MistralChatMessage> ToMistralChatMessages(ChatMessageContent chatMessage, MistralAIToolCallBehavior? toolCallBehavior)
+    internal List<MistralChatMessage> ToMistralChatMessages(ChatMessageContent chatMessage, GigaChatAIToolCallBehavior? toolCallBehavior)
     {
         if (chatMessage.Role == AuthorRole.Assistant)
         {
@@ -1030,7 +1030,7 @@ internal sealed class GigaChatClient
     /// <param name="functionResult">The result of the function call.</param>
     /// <param name="toolCallBehavior">The ToolCallBehavior object containing optional settings like JsonSerializerOptions.TypeInfoResolver.</param>
     /// <returns>A string representation of the function result.</returns>
-    private static string ProcessFunctionResult(object functionResult, MistralAIToolCallBehavior? toolCallBehavior)
+    private static string ProcessFunctionResult(object functionResult, GigaChatAIToolCallBehavior? toolCallBehavior)
     {
         if (functionResult is string stringResult)
         {
