@@ -10,10 +10,10 @@ public class GigaChatExample
     public static async Task Run()
     {
         var builder = Kernel.CreateBuilder();
-        builder.AddMistralChatCompletion(
-            "mistral-medium-latest",
-            "IHO43sq5t332eHpjVQw5YkJxq7t4sxvQ",
-            new Uri("https://api.mistral.ai/v1")
+        builder.AddGigachatChatCompletion(
+            "deepseek/deepseek-chat-v3.1:free",
+            "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",
+            new Uri("https://openrouter.ai/api/v1")
         );
         var kernel = builder.Build();
 
